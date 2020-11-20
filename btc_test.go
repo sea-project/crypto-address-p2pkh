@@ -23,4 +23,6 @@ func Test_BTCAddress(t *testing.T) {
 	t.Log(addr)
 	addr1 := ToETHAddress(pbk)
 	t.Log(addr1.String())
+	wif := ecdsa.PrvKeyToWIF(prik, true)
+	t.Log(wif)
 }

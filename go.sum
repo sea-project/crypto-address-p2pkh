@@ -9,6 +9,8 @@ github.com/sea-project/crypto-signature-ecdsa v0.0.0-20201112141501-3c039ee96ae7
 github.com/sea-project/crypto-signature-ecdsa v0.0.0-20201112141501-3c039ee96ae7/go.mod h1:qvni1OqwXTbKAzrdnzu4oo5P8OYpW6e9eDJLFga4EOs=
 github.com/sea-project/crypto-signature-ecdsa v0.0.0-20201118075610-37097a4625fb h1:Cj7wh9NIpJ7/sSY88lI8hTcfm1h6WN6ei1tqIo4d2/8=
 github.com/sea-project/crypto-signature-ecdsa v0.0.0-20201118075610-37097a4625fb/go.mod h1:H5VNbtGPWH3Ja/xJURNxt51vj/rDzJ0CKHsO6SZnHjs=
+github.com/sea-project/crypto-signature-ecdsa v0.0.0-20201120065859-e37e756cd392 h1:HrpSXNbxnCLYibGLP6xKNz90a/z/RfK0hitJeq0nv3w=
+github.com/sea-project/crypto-signature-ecdsa v0.0.0-20201120065859-e37e756cd392/go.mod h1:H5VNbtGPWH3Ja/xJURNxt51vj/rDzJ0CKHsO6SZnHjs=
 github.com/sea-project/stdlib-bytes v0.0.0-20201112140324-eb835f449f02 h1:iEDLbldVabfhc7KtFuLwPBsnmfhKGqQQleKPkWmltpM=
 github.com/sea-project/stdlib-bytes v0.0.0-20201112140324-eb835f449f02/go.mod h1:HnErhVuroF+dt1ZB8A0IrlMhGUC6AwvEhDFzF61zWS4=
 github.com/sea-project/stdlib-hex-conversion v0.0.0-20201116123118-817e585703be h1:W4Sq6bpN9Sun7TUfynJ1iHKeLBEenxlno5BvRgHnZLY=

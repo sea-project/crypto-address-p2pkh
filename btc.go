@@ -9,13 +9,27 @@ import (
 
 const (
 	mainnetVersion     = byte(0x00) // 定义版本号，一个字节[mainnet]
+	testnetVersion     = byte(0x6f) // 定义版本号，一个字节[testnet]
 	addressChecksumLen = 4          // 定义checksum长度为四个字节
 )
 
+// ToBTCAddress 生成主网地址
 func ToBTCAddress(p *ecdsa.PublicKey) string {
 	pubKeyBytes := p.SerializeCompressed()
 	ripemd160Hash := Ripemd160Hash(pubKeyBytes)
 	versionRipemd160hash := append([]byte{mainnetVersion}, ripemd160Hash...)
+	//调用CheckSum方法返回前四个字节的checksum
+	checkSumBytes := CheckSum(versionRipemd160hash)
+	//将version+Pub Key hash+ checksum生成25个字节
+	bytes := append(versionRipemd160hash, checkSumBytes...)
+	return base58.Encode(bytes, base58.BitcoinAlphabet)
+}
+
+// ToBTCTestAddress 生成测试网地址
+func ToBTCTestAddress(p *ecdsa.PublicKey) string {
+	pubKeyBytes := p.SerializeCompressed()
+	ripemd160Hash := Ripemd160Hash(pubKeyBytes)
+	versionRipemd160hash := append([]byte{testnetVersion}, ripemd160Hash...)
 	//调用CheckSum方法返回前四个字节的checksum
 	checkSumBytes := CheckSum(versionRipemd160hash)
 	//将version+Pub Key hash+ checksum生成25个字节

@@ -7,7 +7,7 @@ import (
 )
 
 func Test_BTCAddress(t *testing.T) {
-	prik, _ := ecdsa.HexToPrvKey("28ea039252a3c0b5f3ec2d92f664011561ccf69f434512f20d0daa5fb2a34931")
+	prik, _ := ecdsa.HexToPrvKey("962a3216577de604a0a44086e78960263131b05b92f5ccd3b1d494acf05d3057")
 	//k,_ := new(big.Int).SetString("23750643740083697368679458007448773432002777684636444703289980801231536385103",0)
 	//prik, pbk := ecdsa.PrivKeyFromBytes(ecc.S256(), k.Bytes())
 	//prik, pbk := ecdsa.GenerateKey()
@@ -18,9 +18,11 @@ func Test_BTCAddress(t *testing.T) {
 	pbk := prik.ToPubKey()
 	pubKeyBytes := pbk.SerializeUncompressed()
 	t.Log("pubKey", hex.EncodeToString(pubKeyBytes))
-	addr := ToBTCAddress(pbk)
+	mainAddr := ToBTCAddress(pbk)
+	testAddr := ToBTCTestAddress(pbk)
 	t.Log(prik.D)
-	t.Log(addr)
+	t.Log(mainAddr)
+	t.Log(testAddr)
 	addr1 := ToETHAddress(pbk)
 	t.Log(addr1.String())
 	wif := ecdsa.PrvKeyToWIF(prik, true)

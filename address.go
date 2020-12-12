@@ -117,6 +117,7 @@ func (a Address) Value() (driver.Value, error) {
 // ToICAP 转换成ICAP格式地址
 func (a Address) ToICAP(prefix, orgcode string) string {
 	enc := stdlib.DECToBHex(a.Big())
+	enc = strings.ToUpper(enc)
 	if len(enc) < 31 {
 		enc = join(strings.Repeat("0", 31-len(enc)), enc)
 	}
@@ -129,8 +130,8 @@ func join(s ...string) string {
 }
 
 func checkDigits(s, prefix, orgcode string) string {
-	prefix = strings.ToLower(prefix)
-	orgcode = strings.ToLower(orgcode)
+	prefix = strings.ToUpper(prefix)
+	orgcode = strings.ToUpper(orgcode)
 	expanded, _ := iso13616Expand(strings.Join([]string{s, prefix, orgcode, "00"}, ""))
 	num, _ := new(big.Int).SetString(expanded, 10)
 	num.Sub(Big98, num.Mod(num, Big97))
@@ -163,8 +164,8 @@ func iso13616Expand(s string) (string, error) {
 func validBase36(s string) bool {
 	for _, c := range s {
 		i := uint64(c)
-		// 0-9 or a-z
-		if i < 48 || (i > 57 && i < 97) || i > 123 {
+		// 0-9 or A-Z
+		if i < 48 || (i > 57 && i < 65) || i > 90 {
 			return false
 		}
 	}
